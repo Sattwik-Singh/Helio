@@ -1,0 +1,95 @@
+"""Minimal client for HAPI (Heliophysics Application Programmer's Interface) servers.
+
+Only the standard library and pandas are used. Requests follow the HAPI 3
+parameter names (dataset, start, stop) and fall back to the HAPI 2 names
+(id, time.min, time.max) if a server rejects them.
+"""
+
+from __future__ import annotations
+
+import io
+import json
+import urllib.error
+import urllib.parse
+import urllib.request
+
+import numpy as np
+import pandas as pd
+
+CDAWEB = "https://cdaweb.gsfc.nasa.gov/hapi"
+_TIMEOUT = 120
+
+
+def _get(url: str) -> bytes:
+    req = urllib.request.Request(url, headers={"User-Agent": "helios-shocks/0.1"})
+    with urllib.request.urlopen(req, timeout=_TIMEOUT) as resp:
+        return resp.read()
+
+
+def _query(server: str, endpoint: str, v3: dict, v2: dict) -> bytes:
+    base = f"{server.rstrip('/')}/{endpoint}"
+    try:
+        return _get(f"{base}?{urllib.parse.urlencode(v3)}")
+    except urllib.error.HTTPError as err:
+        if err.code not in (400, 404):
+            raise
+        return _get(f"{base}?{urllib.parse.urlencode(v2)}")
+
+
+def catalog(server: str = CDAWEB) -> list[str]:
+    """Dataset identifiers offered by the server."""
+    return [d["id"] for d in json.loads(_get(f"{server.rstrip('/')}/catalog"))["catalog"]]
+
+
+def info(dataset: str, server: str = CDAWEB) -> dict:
+    """Metadata for one dataset: parameters, units, fill values, time coverage, cadence."""
+    return json.loads(_query(server, "info", {"dataset": dataset}, {"id": dataset}))
+
+
+def column_names(meta: dict, parameters: list[str] | None = None) -> list[str]:
+    """Flat column names for a CSV response: vector parameters expand to name_0, name_1, ..."""
+    names: list[str] = []
+    for i, p in enumerate(meta["parameters"]):
+        if i > 0 and parameters is not None and p["name"] not in parameters:
+            continue
+        size = int(np.prod(p.get("size", [1])))
+        names.extend([p["name"]] if size == 1 else [f"{p['name']}_{k}" for k in range(size)])
+    return names
+
+
+def parse_csv(text: str, meta: dict, parameters: list[str] | None = None) -> pd.DataFrame:
+    """Parse a HAPI CSV body into a DataFrame indexed by UTC time, with fill values as NaN."""
+    names = column_names(meta, parameters)
+    if not text.strip():
+        return pd.DataFrame(columns=names[1:], index=pd.DatetimeIndex([], name="time", tz="UTC"))
+    df = pd.read_csv(io.StringIO(text), header=None, names=names)
+    df[names[0]] = pd.to_datetime(df[names[0]], utc=True, format="ISO8601")
+    df = df.set_index(names[0]).rename_axis("time")
+    for i, p in enumerate(meta["parameters"]):
+        if i == 0 or (parameters is not None and p["name"] not in parameters):
+            continue
+        fill = p.get("fill")
+        if fill in (None, "", "null"):
+            continue
+        cols = [c for c in df.columns if c == p["name"] or c.startswith(p["name"] + "_")]
+        try:
+            fill_value = float(fill)
+        except (TypeError, ValueError):
+            continue
+        for c in cols:
+            col = pd.to_numeric(df[c], errors="coerce")
+            df[c] = col.mask(np.isclose(col, fill_value, rtol=1e-6, atol=0.0))
+    return df
+
+
+def fetch(dataset: str, parameters: list[str], start: str, stop: str, server: str = CDAWEB,
+          meta: dict | None = None) -> pd.DataFrame:
+    """Time series for the given parameters over [start, stop) (ISO 8601 UTC strings)."""
+    meta = meta or info(dataset, server)
+    plist = ",".join(parameters)
+    body = _query(
+        server, "data",
+        {"dataset": dataset, "parameters": plist, "start": start, "stop": stop, "format": "csv"},
+        {"id": dataset, "parameters": plist, "time.min": start, "time.max": stop, "format": "csv"},
+    )
+    return parse_csv(body.decode("utf-8"), meta, parameters)
