@@ -1,0 +1,840 @@
+{
+  "server": "https://cdaweb.gsfc.nasa.gov/hapi",
+  "datasets": {
+    "WI_K0_SWE": {
+      "spacecraft": "wind",
+      "kind": "plasma",
+      "start": "1994-11-01T12:00:00Z",
+      "stop": "2026-11-14T23:58:50Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null,
+          "fill": null
+        },
+        {
+          "name": "SC_pos_gse",
+          "units": "km",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "SC_pos_GSM",
+          "units": "km",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "SC_pos_R",
+          "units": "km",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "QF_V",
+          "units": " ",
+          "size": null,
+          "fill": "-2147483648"
+        },
+        {
+          "name": "QF_Np",
+          "units": " ",
+          "size": null,
+          "fill": "-2147483648"
+        },
+        {
+          "name": "V_GSE",
+          "units": "km/s",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "V_GSM",
+          "units": "km/s",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "V_GSE_p",
+          "units": null,
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "V_GSE_plog",
+          "units": null,
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "THERMAL_SPD",
+          "units": "km/s",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "Np",
+          "units": "#/cc",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "Np_l",
+          "units": "#/cc",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "Pressure",
+          "units": "nPa",
+          "size": null,
+          "fill": "-1.0E31"
+        }
+      ],
+      "candidates_found": [
+        "V_GSE",
+        "Np",
+        "THERMAL_SPD"
+      ],
+      "candidates_missing": []
+    },
+    "AC_H0_MFI": {
+      "spacecraft": "ace",
+      "kind": "mag",
+      "start": "1997-09-02T00:00:12Z",
+      "stop": "2026-08-31T23:59:54Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null,
+          "fill": null
+        },
+        {
+          "name": "Magnitude",
+          "units": "nT",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "BGSEc",
+          "units": "nT",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "BGSM",
+          "units": "nT",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "dBrms",
+          "units": "nT",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "SC_pos_GSE",
+          "units": "km",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "SC_pos_GSM",
+          "units": "km",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        }
+      ],
+      "candidates_found": [
+        "BGSEc"
+      ],
+      "candidates_missing": []
+    },
+    "AC_H0_SWE": {
+      "spacecraft": "ace",
+      "kind": "plasma",
+      "start": "1998-02-04T00:00:31Z",
+      "stop": "2024-07-09T23:59:13Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null,
+          "fill": null
+        },
+        {
+          "name": "Np",
+          "units": "#/cc",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "Vp",
+          "units": "km/s",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "Tpr",
+          "units": "Kelvin",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "alpha_ratio",
+          "units": "ratio",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "V_GSE",
+          "units": "km/s",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "V_RTN",
+          "units": "km/s",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "V_GSM",
+          "units": "km/s",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "SC_pos_GSE",
+          "units": "km",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "SC_pos_GSM",
+          "units": "km",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        }
+      ],
+      "candidates_found": [
+        "V_GSE",
+        "Np",
+        "Tpr"
+      ],
+      "candidates_missing": []
+    },
+    "DSCOVR_H0_MAG": {
+      "spacecraft": "dscovr",
+      "kind": "mag",
+      "start": "2015-06-08T00:00:00Z",
+      "stop": "2026-10-23T23:59:59Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null,
+          "fill": null
+        },
+        {
+          "name": "B1F1",
+          "units": "nT",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "B1SDF1",
+          "units": "nT",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "B1GSE",
+          "units": "nT",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "B1SDGSE",
+          "units": "nT",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "B1RTN",
+          "units": "nT",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "B1SDRTN",
+          "units": "nT",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "FLAG1",
+          "units": " ",
+          "size": null,
+          "fill": "-32768"
+        }
+      ],
+      "candidates_found": [
+        "B1GSE"
+      ],
+      "candidates_missing": []
+    },
+    "DSCOVR_H1_FC": {
+      "spacecraft": "dscovr",
+      "kind": "plasma",
+      "start": "2016-06-03T00:00:00Z",
+      "stop": "2019-06-27T23:58:59Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null,
+          "fill": null
+        },
+        {
+          "name": "DQF",
+          "units": "(Good=0)",
+          "size": null,
+          "fill": "4.294967295E9"
+        },
+        {
+          "name": "V_GSE",
+          "units": "km/s (w/o error bars)",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "V_GSE_ErrorBars",
+          "units": "km/s (with error bars)",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "THERMAL_SPD",
+          "units": "km/s (w/o error bars)",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "THERMAL_SPD_ErrorBars",
+          "units": "km/s (with error bars)",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "Np",
+          "units": "#/cc (w/o error bars)",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "Np_ErrorBars",
+          "units": "#/cc (with error bars)",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "THERMAL_TEMP",
+          "units": "K (w/o error bars)",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "THERMAL_TEMP_ErrorBars",
+          "units": "K (with error bars)",
+          "size": null,
+          "fill": "-1.0E31"
+        }
+      ],
+      "candidates_found": [
+        "V_GSE",
+        "Np",
+        "THERMAL_TEMP"
+      ],
+      "candidates_missing": []
+    },
+    "OMNI_HRO2_1MIN": {
+      "spacecraft": "omni",
+      "kind": "merged",
+      "start": "1995-01-01T00:00:00Z",
+      "stop": "2026-10-31T23:59:00Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null,
+          "fill": null
+        },
+        {
+          "name": "IMF",
+          "units": null,
+          "size": null,
+          "fill": "99"
+        },
+        {
+          "name": "PLS",
+          "units": null,
+          "size": null,
+          "fill": "99"
+        },
+        {
+          "name": "IMF_PTS",
+          "units": null,
+          "size": null,
+          "fill": "999"
+        },
+        {
+          "name": "PLS_PTS",
+          "units": null,
+          "size": null,
+          "fill": "999"
+        },
+        {
+          "name": "percent_interp",
+          "units": null,
+          "size": null,
+          "fill": "999"
+        },
+        {
+          "name": "Timeshift",
+          "units": "seconds",
+          "size": null,
+          "fill": "999999"
+        },
+        {
+          "name": "RMS_Timeshift",
+          "units": "seconds",
+          "size": null,
+          "fill": "999999"
+        },
+        {
+          "name": "RMS_phase",
+          "units": "nT",
+          "size": null,
+          "fill": "99.99"
+        },
+        {
+          "name": "Time_btwn_obs",
+          "units": "seconds",
+          "size": null,
+          "fill": "999999"
+        },
+        {
+          "name": "F",
+          "units": "nT",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "BX_GSE",
+          "units": "nT",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "BY_GSE",
+          "units": "nT",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "BZ_GSE",
+          "units": "nT",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "BY_GSM",
+          "units": "nT",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "BZ_GSM",
+          "units": "nT",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "RMS_SD_B",
+          "units": "nT",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "RMS_SD_fld_vec",
+          "units": "nT",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "flow_speed",
+          "units": "km/s",
+          "size": null,
+          "fill": "99999.9"
+        },
+        {
+          "name": "Vx",
+          "units": "km/s",
+          "size": null,
+          "fill": "99999.9"
+        },
+        {
+          "name": "Vy",
+          "units": "km/s",
+          "size": null,
+          "fill": "99999.9"
+        },
+        {
+          "name": "Vz",
+          "units": "km/s",
+          "size": null,
+          "fill": "99999.9"
+        },
+        {
+          "name": "proton_density",
+          "units": "n/cc",
+          "size": null,
+          "fill": "999.99"
+        },
+        {
+          "name": "T",
+          "units": "K",
+          "size": null,
+          "fill": "9999999.0"
+        },
+        {
+          "name": "NaNp_Ratio",
+          "units": " ",
+          "size": null,
+          "fill": "9.999"
+        },
+        {
+          "name": "Pressure",
+          "units": "nPa",
+          "size": null,
+          "fill": "99.99"
+        },
+        {
+          "name": "E",
+          "units": "mV/m",
+          "size": null,
+          "fill": "999.99"
+        },
+        {
+          "name": "Beta",
+          "units": null,
+          "size": null,
+          "fill": "999.99"
+        },
+        {
+          "name": "Mach_num",
+          "units": null,
+          "size": null,
+          "fill": "999.9"
+        },
+        {
+          "name": "Mgs_mach_num",
+          "units": null,
+          "size": null,
+          "fill": "99.9"
+        },
+        {
+          "name": "x",
+          "units": "Re",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "y",
+          "units": "Re",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "z",
+          "units": "Re",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "BSN_x",
+          "units": "Re",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "BSN_y",
+          "units": "Re",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "BSN_z",
+          "units": "Re",
+          "size": null,
+          "fill": "9999.99"
+        },
+        {
+          "name": "AE_INDEX",
+          "units": "nT",
+          "size": null,
+          "fill": "99999"
+        },
+        {
+          "name": "AL_INDEX",
+          "units": "nT",
+          "size": null,
+          "fill": "99999"
+        },
+        {
+          "name": "AU_INDEX",
+          "units": "nT",
+          "size": null,
+          "fill": "99999"
+        },
+        {
+          "name": "SYM_D",
+          "units": "nT",
+          "size": null,
+          "fill": "99999"
+        },
+        {
+          "name": "SYM_H",
+          "units": "nT",
+          "size": null,
+          "fill": "99999"
+        },
+        {
+          "name": "ASY_D",
+          "units": "nT",
+          "size": null,
+          "fill": "99999"
+        },
+        {
+          "name": "ASY_H",
+          "units": "nT",
+          "size": null,
+          "fill": "99999"
+        }
+      ],
+      "candidates_found": [
+        "BX_GSE",
+        "BY_GSE",
+        "BZ_GSE",
+        "Vx",
+        "Vy",
+        "Vz",
+        "proton_density",
+        "T"
+      ],
+      "candidates_missing": []
+    }
+  },
+  "events": [
+    {
+      "event": {
+        "time": "2018-04-19T23:46:34Z",
+        "spacecraft": "wind",
+        "type": "FF"
+      },
+      "dataset": "WI_H0_MFI",
+      "error": "KeyError('WI_H0_MFI')"
+    },
+    {
+      "event": {
+        "time": "2018-04-19T23:46:34Z",
+        "spacecraft": "wind",
+        "type": "FF"
+      },
+      "dataset": "WI_K0_SWE",
+      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+    },
+    {
+      "event": {
+        "time": "2018-03-09T17:08:21Z",
+        "spacecraft": "wind",
+        "type": "FF"
+      },
+      "dataset": "WI_H0_MFI",
+      "error": "KeyError('WI_H0_MFI')"
+    },
+    {
+      "event": {
+        "time": "2018-03-09T17:08:21Z",
+        "spacecraft": "wind",
+        "type": "FF"
+      },
+      "dataset": "WI_K0_SWE",
+      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+    },
+    {
+      "event": {
+        "time": "2018-03-09T17:22:40Z",
+        "spacecraft": "ace",
+        "type": "FF"
+      },
+      "dataset": "AC_H0_MFI",
+      "file": "ace_mag_20180309T172240.csv",
+      "rows": 450,
+      "columns": [
+        "BGSEc_0",
+        "BGSEc_1",
+        "BGSEc_2"
+      ],
+      "nan_fraction": 0.0
+    },
+    {
+      "event": {
+        "time": "2018-03-09T17:22:40Z",
+        "spacecraft": "ace",
+        "type": "FF"
+      },
+      "dataset": "AC_H0_SWE",
+      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+    },
+    {
+      "event": {
+        "time": "2018-01-09T00:32:12Z",
+        "spacecraft": "wind",
+        "type": "FR"
+      },
+      "dataset": "WI_H0_MFI",
+      "error": "KeyError('WI_H0_MFI')"
+    },
+    {
+      "event": {
+        "time": "2018-01-09T00:32:12Z",
+        "spacecraft": "wind",
+        "type": "FR"
+      },
+      "dataset": "WI_K0_SWE",
+      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+    }
+  ],
+  "errors": [
+    {
+      "dataset": "WI_H0_MFI",
+      "error": "<HTTPError 400: '400'>"
+    },
+    {
+      "event": {
+        "time": "2018-04-19T23:46:34Z",
+        "spacecraft": "wind",
+        "type": "FF"
+      },
+      "dataset": "WI_H0_MFI",
+      "error": "KeyError('WI_H0_MFI')"
+    },
+    {
+      "event": {
+        "time": "2018-04-19T23:46:34Z",
+        "spacecraft": "wind",
+        "type": "FF"
+      },
+      "dataset": "WI_K0_SWE",
+      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+    },
+    {
+      "event": {
+        "time": "2018-03-09T17:08:21Z",
+        "spacecraft": "wind",
+        "type": "FF"
+      },
+      "dataset": "WI_H0_MFI",
+      "error": "KeyError('WI_H0_MFI')"
+    },
+    {
+      "event": {
+        "time": "2018-03-09T17:08:21Z",
+        "spacecraft": "wind",
+        "type": "FF"
+      },
+      "dataset": "WI_K0_SWE",
+      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+    },
+    {
+      "event": {
+        "time": "2018-03-09T17:22:40Z",
+        "spacecraft": "ace",
+        "type": "FF"
+      },
+      "dataset": "AC_H0_SWE",
+      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+    },
+    {
+      "event": {
+        "time": "2018-01-09T00:32:12Z",
+        "spacecraft": "wind",
+        "type": "FR"
+      },
+      "dataset": "WI_H0_MFI",
+      "error": "KeyError('WI_H0_MFI')"
+    },
+    {
+      "event": {
+        "time": "2018-01-09T00:32:12Z",
+        "spacecraft": "wind",
+        "type": "FR"
+      },
+      "dataset": "WI_K0_SWE",
+      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+    }
+  ]
+}
