@@ -17,7 +17,11 @@ import numpy as np
 import pandas as pd
 
 CDAWEB = "https://cdaweb.gsfc.nasa.gov/hapi"
-_TIMEOUT = 120
+_TIMEOUT = 180
+
+
+class HapiError(RuntimeError):
+    """The server answered with a HAPI status message instead of data."""
 
 
 def _get(url: str) -> bytes:
@@ -31,9 +35,37 @@ def _query(server: str, endpoint: str, v3: dict, v2: dict) -> bytes:
     try:
         return _get(f"{base}?{urllib.parse.urlencode(v3)}")
     except urllib.error.HTTPError as err:
+        first = _status_message(err)
         if err.code not in (400, 404):
-            raise
+            raise HapiError(first) from err
+    try:
         return _get(f"{base}?{urllib.parse.urlencode(v2)}")
+    except urllib.error.HTTPError as err:
+        raise HapiError(f"{first} | with HAPI 2 names: {_status_message(err)}") from err
+
+
+def _status_message(err: urllib.error.HTTPError) -> str:
+    """The HAPI status (code and message) carried in an error response body, if any."""
+    try:
+        body = err.read().decode("utf-8", "replace")
+        status = json.loads(body).get("status", {})
+        return f"HTTP {err.code}, HAPI {status.get('code')}: {status.get('message')}"
+    except Exception:  # noqa: BLE001 - the body is best-effort context only
+        return f"HTTP {err.code}"
+
+
+def order_parameters(meta: dict, parameters: list[str]) -> list[str]:
+    """Requested parameters in the dataset's own order.
+
+    HAPI requires this: a request listing parameters in any other order is
+    rejected with status 1411 (out-of-order or duplicate parameters).
+    """
+    known = [p["name"] for p in meta["parameters"][1:]]
+    unknown = [p for p in parameters if p not in known]
+    if unknown:
+        raise HapiError(f"parameters not in dataset: {unknown}")
+    wanted = set(parameters)
+    return [name for name in known if name in wanted]
 
 
 def catalog(server: str = CDAWEB) -> list[str]:
@@ -86,10 +118,15 @@ def fetch(dataset: str, parameters: list[str], start: str, stop: str, server: st
           meta: dict | None = None) -> pd.DataFrame:
     """Time series for the given parameters over [start, stop) (ISO 8601 UTC strings)."""
     meta = meta or info(dataset, server)
+    parameters = order_parameters(meta, parameters)
     plist = ",".join(parameters)
     body = _query(
         server, "data",
         {"dataset": dataset, "parameters": plist, "start": start, "stop": stop, "format": "csv"},
         {"id": dataset, "parameters": plist, "time.min": start, "time.max": stop, "format": "csv"},
     )
-    return parse_csv(body.decode("utf-8"), meta, parameters)
+    text = body.decode("utf-8")
+    if text.lstrip().startswith("{"):  # a status object delivered with HTTP 200
+        status = json.loads(text).get("status", {})
+        raise HapiError(f"HAPI {status.get('code')}: {status.get('message')}")
+    return parse_csv(text, meta, parameters)

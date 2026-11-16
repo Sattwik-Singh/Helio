@@ -50,6 +50,27 @@ def main() -> int:
                 report["errors"].append({"dataset": ds, "error": repr(err)})
                 print(f"FAIL  {ds}: {err!r}")
 
+    # Some CDAWeb datasets are split into sub-datasets on the HAPI server (e.g. NAME@0, NAME@1).
+    try:
+        ids = hapi.catalog()
+        prefixes = ("WI_H0_MFI", "WI_H2_MFI", "WI_H1_SWE", "WI_PM_3DP", "WI_K0_SWE", "AC_H0_", "AC_H2_SWE", "AC_H3_MFI", "DSCOVR_")
+        report["catalog_matches"] = sorted(i for i in ids if i.startswith(prefixes))
+        report["catalog_size"] = len(ids)
+        for ds in report["catalog_matches"]:
+            if ds in metas:
+                continue
+            try:
+                m = hapi.info(ds)
+                report.setdefault("related", {})[ds] = {
+                    "start": m.get("startDate"), "stop": m.get("stopDate"), "cadence": m.get("cadence"),
+                    "parameters": [{"name": q["name"], "units": q.get("units"), "size": q.get("size")} for q in m["parameters"]],
+                }
+            except Exception as err:  # noqa: BLE001
+                report["errors"].append({"dataset": ds, "error": repr(err)})
+        print(f"catalog: {len(ids)} datasets; related: {report['catalog_matches']}")
+    except Exception as err:  # noqa: BLE001
+        report["errors"].append({"catalog": repr(err)})
+
     for ev in PROBE_EVENTS:
         t = pd.Timestamp(ev["time"])
         start = (t - pd.Timedelta(hours=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -58,6 +79,8 @@ def main() -> int:
             ds = spec["dataset"]
             entry = {"event": ev, "dataset": ds}
             try:
+                if ds not in metas:
+                    raise RuntimeError("dataset info unavailable")
                 found = report["datasets"][ds]["candidates_found"]
                 if not found:
                     raise RuntimeError("none of the candidate parameters exist in this dataset")

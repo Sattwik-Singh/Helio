@@ -32,3 +32,14 @@ def test_csv_parsing_sets_time_index_and_masks_fill_values():
 
 def test_empty_response_gives_empty_frame():
     assert hapi.parse_csv("", META, ["Np"]).empty
+
+
+def test_parameters_are_sent_in_dataset_order():
+    """Learned from the first probe: CDAWeb rejects out-of-order parameters (HAPI status 1411)."""
+    assert hapi.order_parameters(META, ["Np", "BGSE"]) == ["BGSE", "Np"]
+    try:
+        hapi.order_parameters(META, ["Np", "Nope"])
+    except hapi.HapiError as err:
+        assert "Nope" in str(err)
+    else:
+        raise AssertionError("unknown parameter should be rejected")
