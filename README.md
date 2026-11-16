@@ -2,13 +2,43 @@
 
 Physics-audited detection and analysis of interplanetary shocks in solar wind data.
 
-**Status: early, but running on real data.** On four catalogued shocks the
-pipeline reproduces the reference catalogue's parameters and finds each shock
-blind. That is a check that the method is implemented correctly, not a
-performance benchmark; the benchmark over a full year is the next milestone.
-See [PLAN.md](PLAN.md) for the roadmap and what is verified.
+**Status: first benchmark done.** Two years of Wind data have been scanned
+and scored against the Heliospheric Shock Database. See [PLAN.md](PLAN.md)
+for the roadmap and what is verified.
 
-## First results on spacecraft data
+## Benchmark: Wind, 2022 and 2023
+
+A rule-based detector applies the database's own selection criteria across
+the whole year, then a physics audit removes candidates that cannot be fast
+shocks. Detections are matched to the catalogue within 120 seconds.
+
+| Year | Stage | Detections | Matched | False positives | Precision | Recall |
+|---|---|---|---|---|---|---|
+| 2023 (tuning) | criteria only | 64 | 35 of 36 | 29 | 0.55 | 0.97 |
+| 2023 (tuning) | + physics audit | 49 | 35 of 36 | 14 | 0.71 | 0.97 |
+| 2022 (held out) | criteria only | 52 | 21 of 21 | 31 | 0.40 | 1.00 |
+| 2022 (held out) | + physics audit | 40 | 21 of 21 | 19 | 0.53 | 1.00 |
+
+- **Recall is high:** 56 of 57 catalogued shocks are found, with a median timing
+  error of 4–6 s. The one miss was detected 131 s from the catalogued time,
+  beside a data gap.
+- **The audit has two tests.** The upstream flow must be super-fast
+  (M_fast > 1), which the jump conditions require and which needs no
+  threshold; and the field change must be abrupt (sharpness ≥ 0.3), a
+  threshold chosen on 2023. On the held-out year the audit still loses no
+  catalogued shock, but improves precision less.
+- **What the remaining false positives are is not yet known.** Several look
+  like sharp, weak shocks in the data. They may be real events absent from the
+  catalogue, or not shocks at all; that needs review, and until then
+  precision is measured against the catalogue as it stands.
+- **For matched events the derived parameters agree with the catalogue**
+  (medians): shock normal within 0.5°, shock speed within 0.2%, magnetosonic
+  Mach number within 0.7%.
+
+Reproduce with `python scripts/benchmark.py wind <cache dir> <catalogue export>`.
+The catalogue export is downloaded from the database and is not redistributed here.
+
+## Parameter check on four shocks
 
 Four shocks from the Heliospheric Shock Database (three at Wind, one at ACE,
 2018), analysed at the catalogued time with the catalogue's own windows and

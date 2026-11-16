@@ -58,22 +58,32 @@ Status: `[x]` done and tested, `[~]` written but unverified, `[ ]` to do.
       (`scripts/scan_probe_events.py`): one detection in each, 1–8 s from the
       catalogued time, no false alarms. Eight hours of data centred on known
       shocks — encouraging, not a benchmark.
-- [ ] Obtain the full Helsinki catalogue export for Wind, ACE, DSCOVR
+- [x] Helsinki catalogue export obtained (2,328 shocks; kept out of the repository, see `helios/data/catalog.py`)
 - [ ] Extend the go/no-go check from 4 shocks to 20+, including pre-2015 events
 
 ## Phase 2 — Baseline benchmark
 
-- [ ] Vectorise the scanner (it slices pandas frames per grid point: fine for hours, too slow for years)
-- [ ] Download one full year for one spacecraft (Wind), cached on a data branch
-- [ ] Run the baseline detector over the year; score against the catalogue
-- [ ] Characterise failures: what do false positives look like? what is missed?
-- [ ] Use native cadence (3 s field, 90 s plasma) instead of one-minute means
-- [ ] Publish the baseline numbers. This is the bar every later stage must clear.
+- [x] Vectorised scanner (`detect/fast.py`): a year in about 2 seconds, identical to the reference scanner on the probe events
+- [x] Range downloader and `Fetch data` workflow; Wind 2022 and 2023 cached on the `data` branch (15-second field bins, native plasma)
+- [x] Baseline benchmark against the catalogue (`scripts/benchmark.py`, 120 s matching tolerance):
+
+  | Year | Catalogue shocks | Detections | Matched | False positives | Precision | Recall |
+  |---|---|---|---|---|---|---|
+  | 2023 | 36 | 64 | 35 | 29 | 0.55 | 0.97 |
+  | 2022 | 21 | 52 | 21 | 31 | 0.40 | 1.00 |
+
+  The one miss (2023-05-12) was found 131 s from the catalogued time, next to a data gap.
+  For matched events the parameters agree with the catalogue: normal 0.4–0.5°, shock speed 0.2%, M_ms 0.6–0.7% (medians).
+- [x] First look at the false positives: about a third have sub-fast upstream flow, others are gradual; the rest look shock-like
+- [ ] Use native 3-second field for timing (the cache is 15-second bins)
+- [ ] Review the unmatched candidates that pass the audit: weak shocks missing from the catalogue, or something else?
 
 ## Phase 3 — Physics audit and learned detector
 
-- [ ] Physics audit score per candidate: sharpness, Rankine–Hugoniot residuals
-      with uncertainties, agreement between normal methods, M_fast > 1
+- [x] Physics audit, first version (`detect/audit.py`): M_fast > 1 (required by the jump conditions, no threshold)
+      and sharpness ≥ 0.3 (threshold chosen on 2023). Precision 0.55 → 0.71 on 2023 and, **held out**, 0.40 → 0.53 on
+      2022, with no catalogued shock lost in either year. The gain is smaller on the held-out year.
+- [ ] Extend the audit: Rankine–Hugoniot residuals with uncertainties, agreement between normal methods
 - [ ] Parameter uncertainties by resampling the upstream/downstream windows
 - [ ] Learned detector (1D CNN or gradient-boosted trees on window features),
       trained with a time-based split: train on early years, test on later ones

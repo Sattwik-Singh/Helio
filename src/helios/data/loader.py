@@ -65,8 +65,10 @@ def window_state(data: EventData, start: pd.Timestamp, stop: pd.Timestamp, min_p
     if len(m) < min_points or p.notna().sum().min() < min_points:
         return None
     pm = p.mean()
-    b_mag = float(np.linalg.norm(m.to_numpy(), axis=1).mean())
-    return PlasmaState(b=m.mean().to_numpy(), v=pm[["vx", "vy", "vz"]].to_numpy(), n=float(pm["n"]), tp=float(pm["tp"]), b_mag=b_mag)
+    xyz = m[["bx", "by", "bz"]]
+    # Binned field data carry the mean of |B| per bin; native data need it computed.
+    b_mag = float(m["bmag"].mean()) if "bmag" in m else float(np.linalg.norm(xyz.to_numpy(), axis=1).mean())
+    return PlasmaState(b=xyz.mean().to_numpy(), v=pm[["vx", "vy", "vz"]].to_numpy(), n=float(pm["n"]), tp=float(pm["tp"]), b_mag=b_mag)
 
 
 def shock_windows(data: EventData, t: pd.Timestamp, shock_type: str):

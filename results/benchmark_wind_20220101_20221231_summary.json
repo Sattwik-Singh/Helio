@@ -1,0 +1,52 @@
+{
+  "spacecraft": "wind",
+  "start": "2022-01-01T00:02:34.360000+00:00",
+  "stop": "2022-12-31T23:59:45+00:00",
+  "days": 364.99803981481483,
+  "tolerance_s": 120.0,
+  "catalogue_shocks": 21,
+  "catalogue_analysable": 21,
+  "detections": 52,
+  "matched": 21,
+  "false_positives": 31,
+  "missed_with_data": 0,
+  "missed_in_gap": 0,
+  "precision": 0.40384615384615385,
+  "recall_all": 1.0,
+  "recall_analysable": 1.0,
+  "median_abs_time_error_s": 4.0,
+  "stages": {
+    "baseline": {
+      "detections": 52,
+      "matched": 21,
+      "false_positives": 31,
+      "precision": 0.40384615384615385,
+      "recall_all": 1.0,
+      "f1": 0.5753424657534247
+    },
+    "super-fast only": {
+      "detections": 43,
+      "matched": 21,
+      "false_positives": 22,
+      "precision": 0.4883720930232558,
+      "recall_all": 1.0,
+      "f1": 0.65625
+    },
+    "abrupt only": {
+      "detections": 46,
+      "matched": 21,
+      "false_positives": 25,
+      "precision": 0.45652173913043476,
+      "recall_all": 1.0,
+      "f1": 0.626865671641791
+    },
+    "full audit": {
+      "detections": 40,
+      "matched": 21,
+      "false_positives": 19,
+      "precision": 0.525,
+      "recall_all": 1.0,
+      "f1": 0.6885245901639345
+    }
+  }
+}
