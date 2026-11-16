@@ -73,7 +73,9 @@ def main():
                "b_ratio": d.params.b_ratio, "n_ratio": d.params.n_ratio, "t_ratio": d.params.t_ratio, "dv": d.params.dv_kms,
                "theta_bn": d.params.theta_bn_deg, "v_shock": d.params.shock_speed_kms, "mach_ms": d.params.mach_magnetosonic,
                "mach_fast": d.params.mach_fast, "sharpness": audits[i].sharpness, "super_fast": audits[i].super_fast,
-               "abrupt": audits[i].abrupt, "audit_passed": audits[i].passed}
+               "abrupt": audits[i].abrupt, "audit_passed": audits[i].passed, "audit_v2_passed": audits[i].passed_v2,
+               "normal_sigma_deg": audits[i].normal_sigma_deg, "mach_fast_low": audits[i].mach_fast_low,
+               "theta_sigma_deg": audits[i].theta_sigma_deg, "v_shock_sigma": audits[i].v_shock_sigma}
         if j is not None:
             c = cat.iloc[j]
             row.update({"catalog_time": c.time.isoformat(), "dt_s": d.time.timestamp() - c.time.timestamp(), "catalog_type": c.type,
@@ -85,7 +87,8 @@ def main():
     # The same benchmark after the physics audit, and with each test alone.
     stages = {}
     for name, keep in (("baseline", np.ones(len(table), bool)), ("super-fast only", table.super_fast.to_numpy()),
-                       ("abrupt only", table.abrupt.to_numpy()), ("full audit", table.audit_passed.to_numpy())):
+                       ("abrupt only", table.abrupt.to_numpy()), ("audit v1", table.audit_passed.to_numpy()),
+                       ("audit v2", table.audit_v2_passed.to_numpy())):
         mm = match_events(det_s[keep], cat_s, tolerance_s=args.tolerance)
         stages[name] = {"detections": int(keep.sum()), "matched": len(mm.pairs), "false_positives": len(mm.false_positives),
                         "precision": mm.precision, "recall_all": mm.recall, "f1": mm.f1}

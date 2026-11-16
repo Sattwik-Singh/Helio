@@ -54,27 +54,24 @@ class ShockParameters:
 
 HSD_TE_1AU_K = 146_277.0
 HSD_TE_INDEX = -0.664
-HSD_TE_SWITCH = "2015-08-01"
 
 
-def hsd_electron_temperature(time, r_au: float = 1.0) -> dict:
+def hsd_electron_temperature(time=None, r_au: float = 1.0) -> dict:
     """Electron temperature assumption of the Heliospheric Shock Database, as keyword arguments.
 
     Electron temperatures are rarely measured well, so the database assumes
-    one (method documentation, 2024-09-06): for shocks from August 2015 on,
     T_e = 146 277 K * R^-0.664 (R in au; the 1 au value for near-Earth
-    spacecraft); for earlier shocks, T_e = 2 T_p. The switch date is taken
-    here as 2015-08-01. The sound speed, magnetosonic speed, beta and Mach
-    numbers all depend on this choice; jump ratios, normals and shock speed
-    do not.
-    """
-    import pandas as pd
+    spacecraft). The sound speed, magnetosonic speed, beta and Mach numbers
+    all depend on this choice; jump ratios, normals and shock speed do not.
 
-    t = pd.Timestamp(time)
-    t = t.tz_localize("UTC") if t.tzinfo is None else t
-    if t >= pd.Timestamp(HSD_TE_SWITCH, tz="UTC"):
-        return {"te_k": HSD_TE_1AU_K * r_au**HSD_TE_INDEX}
-    return {"te_over_tp": 2.0}
+    The method documentation (2024-09-06) also mentions T_e = 2 T_p for
+    shocks before August 2015. The catalogue export does not follow that:
+    for all 43 analysable Wind shocks of 2012 its sound speeds are reproduced
+    to 0.0% with the fixed value and miss by 16% with 2 T_p. The fixed value
+    is therefore used for every date. `time` is accepted for call-site
+    compatibility and ignored.
+    """
+    return {"te_k": HSD_TE_1AU_K * r_au**HSD_TE_INDEX}
 
 
 def analyze_shock(up: PlasmaState, down: PlasmaState, te_over_tp: float = 1.0, te_k: float | None = None,

@@ -40,13 +40,21 @@
       "recall_all": 0.9722222222222222,
       "f1": 0.7608695652173912
     },
-    "full audit": {
+    "audit v1": {
       "detections": 49,
       "matched": 35,
       "false_positives": 14,
       "precision": 0.7142857142857143,
       "recall_all": 0.9722222222222222,
       "f1": 0.8235294117647058
+    },
+    "audit v2": {
+      "detections": 46,
+      "matched": 35,
+      "false_positives": 11,
+      "precision": 0.7608695652173914,
+      "recall_all": 0.9722222222222222,
+      "f1": 0.853658536585366
     }
   }
 }

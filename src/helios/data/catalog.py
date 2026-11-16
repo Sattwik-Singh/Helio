@@ -23,6 +23,8 @@ RENAME = {
     "Shock Speed (km/s)": "v_shock", "Alfven Mach Number": "mach_alfven", "Magnetosonic Mach Number": "mach_ms",
     "Spacecraft X": "sc_x", "Spacecraft Y": "sc_y", "Spacecraft Z": "sc_z", "Spacecraft Coordinate System": "sc_frame",
     "Length of the Analysis Interval (minutes)": "interval_min",
+    "Shock Theta Absolute Error (degrees)": "theta_bn_err", "Shock Speed Absolute Error (km/s)": "v_shock_err",
+    "Magnetosonic Mach Number Absolute Error": "mach_ms_err",
 }
 
 

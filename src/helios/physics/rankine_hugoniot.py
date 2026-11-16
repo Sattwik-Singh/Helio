@@ -72,14 +72,15 @@ class ShockSolution:
     te_over_tp: float
 
 
-def _si(state: PlasmaState, te_over_tp: float):
+def _si(state: PlasmaState, te_over_tp: float, te_k: float | None = None):
     rho = state.n * CC * MP
-    p = state.n * CC * KB * state.tp * (1 + te_over_tp)
+    te = state.tp * te_over_tp if te_k is None else te_k
+    p = state.n * CC * KB * (state.tp + te)
     return rho, state.v * KMS, state.b * NT, p
 
 
 def conservation_residuals(up: PlasmaState, down: PlasmaState, normal, shock_speed: float,
-                           te_over_tp: float = 1.0, gamma: float = GAMMA) -> dict[str, float]:
+                           te_over_tp: float = 1.0, gamma: float = GAMMA, te_k: float | None = None) -> dict[str, float]:
     """Relative violation of each conservation law between two states.
 
     Velocities are transformed to the shock rest frame using `shock_speed`
@@ -90,7 +91,7 @@ def conservation_residuals(up: PlasmaState, down: PlasmaState, normal, shock_spe
     n = n / np.linalg.norm(n)
 
     def fluxes(state):
-        rho, v, b, p = _si(state, te_over_tp)
+        rho, v, b, p = _si(state, te_over_tp, te_k)
         u = v - shock_speed * KMS * n
         un, bn = u @ n, b @ n
         ut, bt = u - un * n, b - bn * n
@@ -104,7 +105,7 @@ def conservation_residuals(up: PlasmaState, down: PlasmaState, normal, shock_spe
         }
 
     f1, f2 = fluxes(up), fluxes(down)
-    rho1, v1, b1, p1 = _si(up, te_over_tp)
+    rho1, v1, b1, p1 = _si(up, te_over_tp, te_k)
     un1 = (v1 - shock_speed * KMS * n) @ n
     scales = {
         "mass": abs(rho1 * un1),

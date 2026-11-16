@@ -52,7 +52,7 @@ Status: `[x]` done and tested, `[~]` written but unverified, `[ ]` to do.
       jump ratios, speeds, beta, θ_Bn and shock speed, 2.1% for the
       magnetosonic Mach number, 0.2° for the shock normal. Getting there
       required two conventions from the catalogue's documentation: its
-      electron temperature (146 277 K at 1 au from August 2015, 2 T_p before)
+      electron temperature (a fixed 146 277 K at 1 au)
       and field strengths as the mean of |B|, not the magnitude of the mean vector.
 - [x] Baseline detector run blind over the four 2-hour windows
       (`scripts/scan_probe_events.py`): one detection in each, 1–8 s from the
@@ -65,12 +65,13 @@ Status: `[x]` done and tested, `[~]` written but unverified, `[ ]` to do.
 
 - [x] Vectorised scanner (`detect/fast.py`): a year in about 2 seconds, identical to the reference scanner on the probe events
 - [x] Range downloader and `Fetch data` workflow; Wind 2022 and 2023 cached on the `data` branch (15-second field bins, native plasma)
-- [x] Baseline benchmark against the catalogue (`scripts/benchmark.py`, 120 s matching tolerance):
+- [x] Baseline benchmark against the catalogue (`scripts/benchmark.py`, 120 s matching tolerance; cached years: 2012, 2022, 2023):
 
   | Year | Catalogue shocks | Detections | Matched | False positives | Precision | Recall |
   |---|---|---|---|---|---|---|
   | 2023 | 36 | 64 | 35 | 29 | 0.55 | 0.97 |
   | 2022 | 21 | 52 | 21 | 31 | 0.40 | 1.00 |
+  | 2012 | 45 | 76 | 42 | 34 | 0.55 | 0.93 |
 
   The one miss (2023-05-12) was found 131 s from the catalogued time, next to a data gap.
   For matched events the parameters agree with the catalogue: normal 0.4–0.5°, shock speed 0.2%, M_ms 0.6–0.7% (medians).
@@ -80,15 +81,22 @@ Status: `[x]` done and tested, `[~]` written but unverified, `[ ]` to do.
 
 ## Phase 3 — Physics audit and learned detector
 
-- [x] Physics audit, first version (`detect/audit.py`): M_fast > 1 (required by the jump conditions, no threshold)
-      and sharpness ≥ 0.3 (threshold chosen on 2023). Precision 0.55 → 0.71 on 2023 and, **held out**, 0.40 → 0.53 on
-      2022, with no catalogued shock lost in either year. The gain is smaller on the held-out year.
-- [ ] Extend the audit: Rankine–Hugoniot residuals with uncertainties, agreement between normal methods
-- [ ] Parameter uncertainties by resampling the upstream/downstream windows
-- [ ] Learned detector (1D CNN or gradient-boosted trees on window features),
-      trained with a time-based split: train on early years, test on later ones
-- [ ] Ablation: baseline vs + audit vs + learned detector, same test years
-- [ ] Sensitivity to the assumed electron temperature
+- [x] Audit v1 (`detect/audit.py`): M_fast > 1 and sharpness ≥ 0.3
+- [x] Parameter uncertainties by resampling the windows (`physics/uncertainty.py`); they rank events like the
+      catalogue's error estimates (Spearman 0.84–0.89) but are 3–6 times smaller, being standard errors that assume
+      independent samples
+- [x] Audit v2: v1 plus a shock normal stable to within 20° under resampling
+- [x] Three-year benchmark with 2022 and 2012 held out (table in the README). The audit trades up to two catalogued
+      shocks per held-out year for 39% to 68% fewer false positives
+- [x] Tested and rejected as audit criteria: tangential electric field and tangential momentum residuals (AUC ≈ 0.6)
+- [x] Learned ranking, first version: logistic regression on six audit features, trained on 2023; held-out AUC 0.93
+      (2022) and 0.87 (2012)
+- [x] Electron temperature: the catalogue export uses the fixed 146 277 K for 2012 as well, contrary to its documentation
+- [ ] Review the audit-passing unmatched candidates by eye, ideally with someone in space physics
+- [ ] Block bootstrap, so uncertainties respect the time correlation of the fluctuations
+- [ ] Learned detector on the time series itself (1D CNN), only if the ranking above proves insufficient
+- [ ] Sensitivity of every Mach-number-based decision to the assumed electron temperature
+- [ ] Add ACE as a second spacecraft to the benchmark
 
 ## Phase 4 — Multiple spacecraft
 

@@ -5,5 +5,5 @@ __pycache__/
 data/raw/
 *.pyc
 data/catalog/
-data/cache/
+data/cache*/
 results/*.csv

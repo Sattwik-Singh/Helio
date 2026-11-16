@@ -1,0 +1,60 @@
+{
+  "spacecraft": "wind",
+  "start": "2012-01-01T00:00:00+00:00",
+  "stop": "2012-12-31T23:59:45+00:00",
+  "days": 365.9998263888889,
+  "tolerance_s": 120.0,
+  "catalogue_shocks": 45,
+  "catalogue_analysable": 43,
+  "detections": 76,
+  "matched": 42,
+  "false_positives": 34,
+  "missed_with_data": 2,
+  "missed_in_gap": 1,
+  "precision": 0.5526315789473685,
+  "recall_all": 0.9333333333333333,
+  "recall_analysable": 0.9534883720930233,
+  "median_abs_time_error_s": 9.0,
+  "stages": {
+    "baseline": {
+      "detections": 76,
+      "matched": 42,
+      "false_positives": 34,
+      "precision": 0.5526315789473685,
+      "recall_all": 0.9333333333333333,
+      "f1": 0.694214876033058
+    },
+    "super-fast only": {
+      "detections": 62,
+      "matched": 42,
+      "false_positives": 20,
+      "precision": 0.6774193548387096,
+      "recall_all": 0.9333333333333333,
+      "f1": 0.7850467289719625
+    },
+    "abrupt only": {
+      "detections": 64,
+      "matched": 41,
+      "false_positives": 23,
+      "precision": 0.640625,
+      "recall_all": 0.9111111111111111,
+      "f1": 0.7522935779816514
+    },
+    "audit v1": {
+      "detections": 55,
+      "matched": 41,
+      "false_positives": 14,
+      "precision": 0.7454545454545455,
+      "recall_all": 0.9111111111111111,
+      "f1": 0.8200000000000001
+    },
+    "audit v2": {
+      "detections": 51,
+      "matched": 40,
+      "false_positives": 11,
+      "precision": 0.7843137254901961,
+      "recall_all": 0.8888888888888888,
+      "f1": 0.8333333333333334
+    }
+  }
+}

@@ -71,7 +71,7 @@ def test_criteria_reject_weak_and_non_shock_jumps(upstream):
 
 def test_catalogue_electron_temperature_convention(upstream):
     assert hsd_electron_temperature("2018-03-09T17:08:21Z") == {"te_k": 146277.0}
-    assert hsd_electron_temperature("2003-10-29T06:00:00Z") == {"te_over_tp": 2.0}
+    assert hsd_electron_temperature("2003-10-29T06:00:00Z") == {"te_k": 146277.0}  # same before 2015: see docstring
     assert np.isclose(hsd_electron_temperature("2020-01-01", r_au=0.5)["te_k"], 146277.0 * 0.5**-0.664)
     # hotter electrons raise the sound speed and beta, and lower the Mach number; the geometry is untouched
     sol = solve_fast_shock(upstream, [-0.9, 0.3, 0.2], 2.0)
