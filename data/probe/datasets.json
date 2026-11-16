@@ -1,6 +1,83 @@
 {
   "server": "https://cdaweb.gsfc.nasa.gov/hapi",
   "datasets": {
+    "WI_H0_MFI@1": {
+      "spacecraft": "wind",
+      "kind": "mag",
+      "start": "1994-11-13T00:00:30Z",
+      "stop": "2026-10-24T23:59:30Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null,
+          "fill": null
+        },
+        {
+          "name": "B3F1",
+          "units": "nT (3sec)",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "B3F1LOG",
+          "units": "nT (3sec)",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "B3RMSF1",
+          "units": "nT (3sec)",
+          "size": null,
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "B3GSM",
+          "units": "nT (3sec)",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "B3RMSGSM",
+          "units": "nT (3sec)",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "B3GSE",
+          "units": "nT (3sec)",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "B3GSEa",
+          "units": null,
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        },
+        {
+          "name": "B3RMSGSE",
+          "units": "nT (3sec)",
+          "size": [
+            3
+          ],
+          "fill": "-1.0E31"
+        }
+      ],
+      "candidates_found": [
+        "B3GSE"
+      ],
+      "candidates_missing": []
+    },
     "WI_K0_SWE": {
       "spacecraft": "wind",
       "kind": "plasma",
@@ -694,8 +771,15 @@
         "spacecraft": "wind",
         "type": "FF"
       },
-      "dataset": "WI_H0_MFI",
-      "error": "RuntimeError('dataset info unavailable')"
+      "dataset": "WI_H0_MFI@1",
+      "file": "wind_mag_20180419T234634.csv",
+      "rows": 2400,
+      "columns": [
+        "B3GSE_0",
+        "B3GSE_1",
+        "B3GSE_2"
+      ],
+      "nan_fraction": 0.013333333333333334
     },
     {
       "event": {
@@ -721,8 +805,15 @@
         "spacecraft": "wind",
         "type": "FF"
       },
-      "dataset": "WI_H0_MFI",
-      "error": "RuntimeError('dataset info unavailable')"
+      "dataset": "WI_H0_MFI@1",
+      "file": "wind_mag_20180309T170821.csv",
+      "rows": 2400,
+      "columns": [
+        "B3GSE_0",
+        "B3GSE_1",
+        "B3GSE_2"
+      ],
+      "nan_fraction": 0.023750000000000004
     },
     {
       "event": {
@@ -782,8 +873,15 @@
         "spacecraft": "wind",
         "type": "FR"
       },
-      "dataset": "WI_H0_MFI",
-      "error": "RuntimeError('dataset info unavailable')"
+      "dataset": "WI_H0_MFI@1",
+      "file": "wind_mag_20180109T003212.csv",
+      "rows": 2400,
+      "columns": [
+        "B3GSE_0",
+        "B3GSE_1",
+        "B3GSE_2"
+      ],
+      "nan_fraction": 0.0004166666666666667
     },
     {
       "event": {
@@ -804,39 +902,7 @@
       "nan_fraction": 0.014084507042253521
     }
   ],
-  "errors": [
-    {
-      "dataset": "WI_H0_MFI",
-      "error": "HapiError('HTTP 400, HAPI 1400: Bad request - missing required parameter id | with HAPI 2 names: HTTP 400, HAPI 1406: Bad request - unknown dataset id')"
-    },
-    {
-      "event": {
-        "time": "2018-04-19T23:46:34Z",
-        "spacecraft": "wind",
-        "type": "FF"
-      },
-      "dataset": "WI_H0_MFI",
-      "error": "RuntimeError('dataset info unavailable')"
-    },
-    {
-      "event": {
-        "time": "2018-03-09T17:08:21Z",
-        "spacecraft": "wind",
-        "type": "FF"
-      },
-      "dataset": "WI_H0_MFI",
-      "error": "RuntimeError('dataset info unavailable')"
-    },
-    {
-      "event": {
-        "time": "2018-01-09T00:32:12Z",
-        "spacecraft": "wind",
-        "type": "FR"
-      },
-      "dataset": "WI_H0_MFI",
-      "error": "RuntimeError('dataset info unavailable')"
-    }
-  ],
+  "errors": [],
   "catalog_matches": [
     "AC_H0_MFI",
     "AC_H0_SWE",
@@ -1313,68 +1379,6 @@
         {
           "name": "PGSEV",
           "units": "Re (1min)",
-          "size": [
-            3
-          ]
-        }
-      ]
-    },
-    "WI_H0_MFI@1": {
-      "start": "1994-11-13T00:00:30Z",
-      "stop": "2026-10-24T23:59:30Z",
-      "cadence": null,
-      "parameters": [
-        {
-          "name": "Time",
-          "units": "UTC",
-          "size": null
-        },
-        {
-          "name": "B3F1",
-          "units": "nT (3sec)",
-          "size": null
-        },
-        {
-          "name": "B3F1LOG",
-          "units": "nT (3sec)",
-          "size": null
-        },
-        {
-          "name": "B3RMSF1",
-          "units": "nT (3sec)",
-          "size": null
-        },
-        {
-          "name": "B3GSM",
-          "units": "nT (3sec)",
-          "size": [
-            3
-          ]
-        },
-        {
-          "name": "B3RMSGSM",
-          "units": "nT (3sec)",
-          "size": [
-            3
-          ]
-        },
-        {
-          "name": "B3GSE",
-          "units": "nT (3sec)",
-          "size": [
-            3
-          ]
-        },
-        {
-          "name": "B3GSEa",
-          "units": null,
-          "size": [
-            3
-          ]
-        },
-        {
-          "name": "B3RMSGSE",
-          "units": "nT (3sec)",
           "size": [
             3
           ]
