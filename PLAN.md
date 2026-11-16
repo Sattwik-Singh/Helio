@@ -39,23 +39,32 @@ Status: `[x]` done and tested, `[~]` written but unverified, `[ ]` to do.
 - [x] First measurement: how each normal method degrades with noise
       (`scripts/normal_noise_study.py`)
 
-## Phase 1 — First contact with data  ← current
+## Phase 1 — First contact with data
 
-- [~] HAPI client (CSV parsing tested offline; never yet run against the server)
-- [~] Dataset table for Wind, ACE, DSCOVR, OMNI (identifiers and parameter
-      names provisional until the probe runs)
-- [~] Data probe script and GitHub Actions workflow
-- [ ] Run the probe; replace provisional parameter names with the server's
-- [ ] Obtain the Helsinki catalogue export for Wind, ACE, DSCOVR
-- [ ] Loader: merge magnetic field and plasma onto one time base, flag gaps,
-      convert thermal speed to temperature where needed
-- [ ] **Go/no-go check:** analyse 20 catalogued shocks by hand-picked time.
-      Do Helios's B, N, T ratios, normal, θ_Bn, speed and Mach numbers agree
-      with the catalogue? If not, find out why before building further.
+- [x] HAPI client, corrected against the live server (parameters must be sent
+      in dataset order; CDAWeb uses the HAPI 2 request names)
+- [x] Dataset table for Wind, ACE, DSCOVR, OMNI verified by the probe
+      (Wind's 3-second field is `WI_H0_MFI@1`; DSCOVR plasma covers only 2016-06 to 2019-06)
+- [x] Data probe script and GitHub Actions workflow; four shock windows downloaded
+- [x] Loader: field and plasma kept at native cadence, averaged per instrument
+- [x] **Go/no-go check passed on 4 shocks** (3 Wind, 1 ACE; `scripts/compare_probe_events.py`):
+      every catalogue parameter reproduced — median difference 0.1–0.7% for
+      jump ratios, speeds, beta, θ_Bn and shock speed, 2.1% for the
+      magnetosonic Mach number, 0.2° for the shock normal. Getting there
+      required two conventions from the catalogue's documentation: its
+      electron temperature (146 277 K at 1 au from August 2015, 2 T_p before)
+      and field strengths as the mean of |B|, not the magnitude of the mean vector.
+- [x] Baseline detector run blind over the four 2-hour windows
+      (`scripts/scan_probe_events.py`): one detection in each, 1–8 s from the
+      catalogued time, no false alarms. Eight hours of data centred on known
+      shocks — encouraging, not a benchmark.
+- [ ] Obtain the full Helsinki catalogue export for Wind, ACE, DSCOVR
+- [ ] Extend the go/no-go check from 4 shocks to 20+, including pre-2015 events
 
 ## Phase 2 — Baseline benchmark
 
-- [ ] Download one full year for one spacecraft (Wind), cached locally
+- [ ] Vectorise the scanner (it slices pandas frames per grid point: fine for hours, too slow for years)
+- [ ] Download one full year for one spacecraft (Wind), cached on a data branch
 - [ ] Run the baseline detector over the year; score against the catalogue
 - [ ] Characterise failures: what do false positives look like? what is missed?
 - [ ] Use native cadence (3 s field, 90 s plasma) instead of one-minute means
@@ -73,7 +82,8 @@ Status: `[x]` done and tested, `[~]` written but unverified, `[ ]` to do.
 
 ## Phase 4 — Multiple spacecraft
 
-- [ ] Spacecraft positions (SSCWeb or CDAWeb orbit datasets)
+- [ ] Spacecraft positions (the plasma datasets already carry them: `SC_pos_gse`, `SC_pos_GSE`)
+- [ ] First test case is already in hand: the 2018-03-09 shock reached Wind at 17:08:21 and ACE at 17:22:40
 - [ ] Associate the same shock at Wind, ACE and DSCOVR
 - [ ] Arrival-time test: from one spacecraft's normal and speed, predict the
       arrival at the others; compare with observation; report the error distribution

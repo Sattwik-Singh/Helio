@@ -3,7 +3,7 @@ import numpy as np
 from conftest import random_case
 from helios.physics.normals import METHODS, angle_between_deg, shock_normal
 from helios.physics.rankine_hugoniot import PlasmaState, solve_fast_shock
-from helios.physics.shock import analyze_shock
+from helios.physics.shock import analyze_shock, hsd_electron_temperature
 
 
 def test_coplanarity_normals_are_exact_on_exact_shocks():
@@ -67,3 +67,16 @@ def test_criteria_reject_weak_and_non_shock_jumps(upstream):
     fake = PlasmaState(b=np.asarray(upstream.b) * 1.5, v=upstream.v, n=upstream.n * 1.5, tp=upstream.tp)
     p = analyze_shock(upstream, fake)
     assert not p.meets_criteria and p.shock_type == "none"
+
+
+def test_catalogue_electron_temperature_convention(upstream):
+    assert hsd_electron_temperature("2018-03-09T17:08:21Z") == {"te_k": 146277.0}
+    assert hsd_electron_temperature("2003-10-29T06:00:00Z") == {"te_over_tp": 2.0}
+    assert np.isclose(hsd_electron_temperature("2020-01-01", r_au=0.5)["te_k"], 146277.0 * 0.5**-0.664)
+    # hotter electrons raise the sound speed and beta, and lower the Mach number; the geometry is untouched
+    sol = solve_fast_shock(upstream, [-0.9, 0.3, 0.2], 2.0)
+    cold = analyze_shock(sol.upstream, sol.downstream, te_over_tp=1.0)
+    hot = analyze_shock(sol.upstream, sol.downstream, te_k=146277.0)
+    assert hot.sound_speed_kms > cold.sound_speed_kms and hot.plasma_beta > cold.plasma_beta
+    assert hot.mach_magnetosonic < cold.mach_magnetosonic
+    assert hot.normal == cold.normal and hot.shock_speed_kms == cold.shock_speed_kms

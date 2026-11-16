@@ -65,7 +65,8 @@ def window_state(data: EventData, start: pd.Timestamp, stop: pd.Timestamp, min_p
     if len(m) < min_points or p.notna().sum().min() < min_points:
         return None
     pm = p.mean()
-    return PlasmaState(b=m.mean().to_numpy(), v=pm[["vx", "vy", "vz"]].to_numpy(), n=float(pm["n"]), tp=float(pm["tp"]))
+    b_mag = float(np.linalg.norm(m.to_numpy(), axis=1).mean())
+    return PlasmaState(b=m.mean().to_numpy(), v=pm[["vx", "vy", "vz"]].to_numpy(), n=float(pm["n"]), tp=float(pm["tp"]), b_mag=b_mag)
 
 
 def shock_windows(data: EventData, t: pd.Timestamp, shock_type: str):

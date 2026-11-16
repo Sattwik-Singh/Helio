@@ -52,10 +52,41 @@ class ShockParameters:
         return asdict(self)
 
 
-def analyze_shock(up: PlasmaState, down: PlasmaState, te_over_tp: float = 1.0,
+HSD_TE_1AU_K = 146_277.0
+HSD_TE_INDEX = -0.664
+HSD_TE_SWITCH = "2015-08-01"
+
+
+def hsd_electron_temperature(time, r_au: float = 1.0) -> dict:
+    """Electron temperature assumption of the Heliospheric Shock Database, as keyword arguments.
+
+    Electron temperatures are rarely measured well, so the database assumes
+    one (method documentation, 2024-09-06): for shocks from August 2015 on,
+    T_e = 146 277 K * R^-0.664 (R in au; the 1 au value for near-Earth
+    spacecraft); for earlier shocks, T_e = 2 T_p. The switch date is taken
+    here as 2015-08-01. The sound speed, magnetosonic speed, beta and Mach
+    numbers all depend on this choice; jump ratios, normals and shock speed
+    do not.
+    """
+    import pandas as pd
+
+    t = pd.Timestamp(time)
+    t = t.tz_localize("UTC") if t.tzinfo is None else t
+    if t >= pd.Timestamp(HSD_TE_SWITCH, tz="UTC"):
+        return {"te_k": HSD_TE_1AU_K * r_au**HSD_TE_INDEX}
+    return {"te_over_tp": 2.0}
+
+
+def analyze_shock(up: PlasmaState, down: PlasmaState, te_over_tp: float = 1.0, te_k: float | None = None,
                   gamma: float = GAMMA, method: str = "MX3") -> ShockParameters:
-    """Classify a jump between two plasma states and derive its shock parameters."""
-    bu, bd = np.linalg.norm(up.b), np.linalg.norm(down.b)
+    """Classify a jump between two plasma states and derive its shock parameters.
+
+    The electron temperature is either a fixed value `te_k` (kelvin) or, if
+    that is None, `te_over_tp` times the upstream proton temperature.
+    """
+    # Field strengths use <|B|> (as the catalogue does); directions use the mean vector.
+    bu, bd = up.field_strength, down.field_strength
+    bu_vec = np.linalg.norm(up.b)
     vu, vd = np.linalg.norm(up.v), np.linalg.norm(down.v)
     b_ratio, n_ratio, t_ratio = bd / bu, down.n / up.n, down.tp / up.tp
     dv = vd - vu
@@ -75,13 +106,13 @@ def analyze_shock(up: PlasmaState, down: PlasmaState, te_over_tp: float = 1.0,
         n = shock_normal(up.b, down.b, up.v, down.v, "MC")
         used = "MC"
 
-    te = up.tp * te_over_tp
+    te = up.tp * te_over_tp if te_k is None else float(te_k)
     va = float(mhd.alfven_speed(bu, up.n))
     cs = float(mhd.sound_speed(up.tp, te, gamma))
     beta = float(mhd.plasma_beta(up.n, up.tp, bu, te))
 
     if np.all(np.isfinite(n)) and down.n != up.n:
-        theta = np.degrees(np.arccos(np.clip(abs(up.b @ n) / bu, 0, 1)))
+        theta = np.degrees(np.arccos(np.clip(abs(up.b @ n) / bu_vec, 0, 1)))
         v_sh = float((down.n * down.v - up.n * up.v) @ n / (down.n - up.n))
         un = abs(float(up.v @ n) - v_sh)
         vf = float(mhd.fast_speed(va, cs, np.radians(theta)))

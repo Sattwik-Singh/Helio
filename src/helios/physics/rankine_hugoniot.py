@@ -45,6 +45,14 @@ class PlasmaState:
     v: np.ndarray  # bulk velocity vector, km/s
     n: float  # proton number density, cm^-3
     tp: float  # proton temperature, K
+    # Mean field magnitude <|B|> over the averaging window, when the state is a window average.
+    # It exceeds |<B>| whenever the field direction fluctuates, so the two must not be confused.
+    b_mag: float | None = None
+
+    @property
+    def field_strength(self) -> float:
+        """<|B|> if known, otherwise the magnitude of the mean vector."""
+        return float(np.linalg.norm(self.b)) if self.b_mag is None else float(self.b_mag)
 
     def __post_init__(self):
         object.__setattr__(self, "b", np.asarray(self.b, dtype=float))
