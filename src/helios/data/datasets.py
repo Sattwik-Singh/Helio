@@ -1,11 +1,13 @@
-"""Candidate CDAWeb datasets for each spacecraft.
+"""CDAWeb datasets for each spacecraft, as served by its HAPI server.
 
-PROVISIONAL. Dataset identifiers are the CDAWeb names for these products;
-parameter names are from memory of the CDAWeb variable lists and have NOT yet
-been checked against the server from this project (the development sandbox
-cannot reach cdaweb.gsfc.nasa.gov). scripts/probe_hapi.py asks the server for
-each dataset's real parameter list; nothing downstream should rely on this
-table until that probe has run and this note has been removed.
+Dataset identifiers and parameter names were checked against the server by
+scripts/probe_hapi.py (results in data/probe/datasets.json). Two things that
+probe established:
+
+  * WI_H0_MFI is not a dataset on the HAPI server; it is split into
+    WI_H0_MFI@0 (1-minute), @1 (3-second) and @2 (1-hour).
+  * Coverage is uneven: DSCOVR_H1_FC plasma spans only 2016-06 to 2019-06,
+    and AC_H0_SWE ends in 2024-07.
 
 Instruments and native cadences follow the Heliospheric Shock Database
 method documentation (2024-09-06), Appendix A.1.
@@ -13,7 +15,7 @@ method documentation (2024-09-06), Appendix A.1.
 
 SPACECRAFT = {
     "wind": {
-        "mag": {"dataset": "WI_H0_MFI", "instrument": "MFI", "cadence_s": 3, "candidates": ["B3GSE", "BGSE"]},
+        "mag": {"dataset": "WI_H0_MFI@1", "instrument": "MFI", "cadence_s": 3, "candidates": ["B3GSE"]},
         "plasma": {"dataset": "WI_K0_SWE", "instrument": "SWE", "cadence_s": 90, "candidates": ["V_GSE", "Np", "THERMAL_SPD"]},
     },
     "ace": {

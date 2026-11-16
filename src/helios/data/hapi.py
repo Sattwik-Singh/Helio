@@ -1,8 +1,8 @@
 """Minimal client for HAPI (Heliophysics Application Programmer's Interface) servers.
 
-Only the standard library and pandas are used. Requests follow the HAPI 3
-parameter names (dataset, start, stop) and fall back to the HAPI 2 names
-(id, time.min, time.max) if a server rejects them.
+Only the standard library and pandas are used. Requests use the HAPI 2
+parameter names (id, time.min, time.max), which CDAWeb requires, and fall
+back to the HAPI 3 names (dataset, start, stop) if a server rejects them.
 """
 
 from __future__ import annotations
@@ -31,6 +31,9 @@ def _get(url: str) -> bytes:
 
 
 def _query(server: str, endpoint: str, v3: dict, v2: dict) -> bytes:
+    # CDAWeb only understands the HAPI 2 names, and HAPI 3 servers must still accept them,
+    # so those go first; the HAPI 3 names are the fallback.
+    v3, v2 = v2, v3
     base = f"{server.rstrip('/')}/{endpoint}"
     try:
         return _get(f"{base}?{urllib.parse.urlencode(v3)}")
@@ -41,7 +44,7 @@ def _query(server: str, endpoint: str, v3: dict, v2: dict) -> bytes:
     try:
         return _get(f"{base}?{urllib.parse.urlencode(v2)}")
     except urllib.error.HTTPError as err:
-        raise HapiError(f"{first} | with HAPI 2 names: {_status_message(err)}") from err
+        raise HapiError(f"{first} | with HAPI 3 names: {_status_message(err)}") from err
 
 
 def _status_message(err: urllib.error.HTTPError) -> str:
