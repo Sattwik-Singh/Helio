@@ -695,7 +695,7 @@
         "type": "FF"
       },
       "dataset": "WI_H0_MFI",
-      "error": "KeyError('WI_H0_MFI')"
+      "error": "RuntimeError('dataset info unavailable')"
     },
     {
       "event": {
@@ -704,7 +704,16 @@
         "type": "FF"
       },
       "dataset": "WI_K0_SWE",
-      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+      "file": "wind_plasma_20180419T234634.csv",
+      "rows": 72,
+      "columns": [
+        "V_GSE_0",
+        "V_GSE_1",
+        "V_GSE_2",
+        "THERMAL_SPD",
+        "Np"
+      ],
+      "nan_fraction": 0.041666666666666664
     },
     {
       "event": {
@@ -713,7 +722,7 @@
         "type": "FF"
       },
       "dataset": "WI_H0_MFI",
-      "error": "KeyError('WI_H0_MFI')"
+      "error": "RuntimeError('dataset info unavailable')"
     },
     {
       "event": {
@@ -722,7 +731,16 @@
         "type": "FF"
       },
       "dataset": "WI_K0_SWE",
-      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+      "file": "wind_plasma_20180309T170821.csv",
+      "rows": 64,
+      "columns": [
+        "V_GSE_0",
+        "V_GSE_1",
+        "V_GSE_2",
+        "THERMAL_SPD",
+        "Np"
+      ],
+      "nan_fraction": 0.203125
     },
     {
       "event": {
@@ -747,7 +765,16 @@
         "type": "FF"
       },
       "dataset": "AC_H0_SWE",
-      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+      "file": "ace_plasma_20180309T172240.csv",
+      "rows": 113,
+      "columns": [
+        "Np",
+        "Tpr",
+        "V_GSE_0",
+        "V_GSE_1",
+        "V_GSE_2"
+      ],
+      "nan_fraction": 0.049557522123893805
     },
     {
       "event": {
@@ -756,7 +783,7 @@
         "type": "FR"
       },
       "dataset": "WI_H0_MFI",
-      "error": "KeyError('WI_H0_MFI')"
+      "error": "RuntimeError('dataset info unavailable')"
     },
     {
       "event": {
@@ -765,13 +792,22 @@
         "type": "FR"
       },
       "dataset": "WI_K0_SWE",
-      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+      "file": "wind_plasma_20180109T003212.csv",
+      "rows": 71,
+      "columns": [
+        "V_GSE_0",
+        "V_GSE_1",
+        "V_GSE_2",
+        "THERMAL_SPD",
+        "Np"
+      ],
+      "nan_fraction": 0.014084507042253521
     }
   ],
   "errors": [
     {
       "dataset": "WI_H0_MFI",
-      "error": "<HTTPError 400: '400'>"
+      "error": "HapiError('HTTP 400, HAPI 1400: Bad request - missing required parameter id | with HAPI 2 names: HTTP 400, HAPI 1406: Bad request - unknown dataset id')"
     },
     {
       "event": {
@@ -780,16 +816,7 @@
         "type": "FF"
       },
       "dataset": "WI_H0_MFI",
-      "error": "KeyError('WI_H0_MFI')"
-    },
-    {
-      "event": {
-        "time": "2018-04-19T23:46:34Z",
-        "spacecraft": "wind",
-        "type": "FF"
-      },
-      "dataset": "WI_K0_SWE",
-      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+      "error": "RuntimeError('dataset info unavailable')"
     },
     {
       "event": {
@@ -798,25 +825,7 @@
         "type": "FF"
       },
       "dataset": "WI_H0_MFI",
-      "error": "KeyError('WI_H0_MFI')"
-    },
-    {
-      "event": {
-        "time": "2018-03-09T17:08:21Z",
-        "spacecraft": "wind",
-        "type": "FF"
-      },
-      "dataset": "WI_K0_SWE",
-      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
-    },
-    {
-      "event": {
-        "time": "2018-03-09T17:22:40Z",
-        "spacecraft": "ace",
-        "type": "FF"
-      },
-      "dataset": "AC_H0_SWE",
-      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+      "error": "RuntimeError('dataset info unavailable')"
     },
     {
       "event": {
@@ -825,16 +834,1632 @@
         "type": "FR"
       },
       "dataset": "WI_H0_MFI",
-      "error": "KeyError('WI_H0_MFI')"
-    },
-    {
-      "event": {
-        "time": "2018-01-09T00:32:12Z",
-        "spacecraft": "wind",
-        "type": "FR"
-      },
-      "dataset": "WI_K0_SWE",
-      "error": "ValueError('Time data status: {\"code\": 1411 is not ISO8601 format. You might want to try:\\n    - passing `format` if your strings have a consistent format;\\n    - passing `format=\\'ISO8601\\'` if your strings are all ISO8601 but not necessarily in exactly the same format;\\n    - passing `format=\\'mixed\\'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.')"
+      "error": "RuntimeError('dataset info unavailable')"
     }
-  ]
+  ],
+  "catalog_matches": [
+    "AC_H0_MFI",
+    "AC_H0_SWE",
+    "AC_H2_SWE",
+    "AC_H3_MFI",
+    "DSCOVR_AT_DEF",
+    "DSCOVR_AT_PRE",
+    "DSCOVR_COHO1HR_MERGED_MAG",
+    "DSCOVR_H0_MAG",
+    "DSCOVR_H1_FC",
+    "DSCOVR_HELIO1HR_POSITION",
+    "DSCOVR_ORBIT_PRE",
+    "WI_H0_MFI@0",
+    "WI_H0_MFI@1",
+    "WI_H0_MFI@2",
+    "WI_H1_SWE",
+    "WI_H1_SWE_RTN",
+    "WI_H2_MFI",
+    "WI_K0_SWE",
+    "WI_K0_SWE_RTN",
+    "WI_PM_3DP"
+  ],
+  "catalog_size": 3651,
+  "related": {
+    "AC_H2_SWE": {
+      "start": "1998-02-04T00:00:00Z",
+      "stop": "2024-07-09T23:00:00Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "Np",
+          "units": "#/cc",
+          "size": null
+        },
+        {
+          "name": "Vp",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Tpr",
+          "units": "Kelvin",
+          "size": null
+        },
+        {
+          "name": "alpha_ratio",
+          "units": "ratio",
+          "size": null
+        },
+        {
+          "name": "V_GSE",
+          "units": "km/s",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "V_RTN",
+          "units": "km/s",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "V_GSM",
+          "units": "km/s",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "SC_pos_GSE",
+          "units": "km",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "SC_pos_GSM",
+          "units": "km",
+          "size": [
+            3
+          ]
+        }
+      ]
+    },
+    "AC_H3_MFI": {
+      "start": "1998-01-01T00:00:00Z",
+      "stop": "2026-08-31T23:59:59Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "Magnitude",
+          "units": "nT",
+          "size": null
+        },
+        {
+          "name": "BRTN",
+          "units": "nT",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "BGSEc",
+          "units": "nT",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "BGSM",
+          "units": "nT",
+          "size": [
+            3
+          ]
+        }
+      ]
+    },
+    "DSCOVR_AT_DEF": {
+      "start": "2015-02-11T23:17:50Z",
+      "stop": "2026-10-03T23:59:55Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "J2000_Yaw",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "J2000_Pitch",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "J2000_Roll",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "GCI_Yaw",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "GCI_Pitch",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "GCI_Roll",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "GSE_Yaw",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "GSE_Pitch",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "GSE_Roll",
+          "units": "rad",
+          "size": null
+        }
+      ]
+    },
+    "DSCOVR_AT_PRE": {
+      "start": "2015-02-11T22:35:05Z",
+      "stop": "2017-08-03T23:59:45Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "J2000_Yaw",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "J2000_Pitch",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "J2000_Roll",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "GCI_Yaw",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "GCI_Pitch",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "GCI_Roll",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "GSE_Yaw",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "GSE_Pitch",
+          "units": "rad",
+          "size": null
+        },
+        {
+          "name": "GSE_Roll",
+          "units": "rad",
+          "size": null
+        }
+      ]
+    },
+    "DSCOVR_COHO1HR_MERGED_MAG": {
+      "start": "2015-06-08T00:00:00Z",
+      "stop": "2026-09-13T23:00:00Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "radialDistance",
+          "units": "AU",
+          "size": null
+        },
+        {
+          "name": "heliographicLatitude",
+          "units": "deg",
+          "size": null
+        },
+        {
+          "name": "heliographicLongitude",
+          "units": "deg",
+          "size": null
+        },
+        {
+          "name": "BR",
+          "units": "nT",
+          "size": null
+        },
+        {
+          "name": "BT",
+          "units": "nT",
+          "size": null
+        },
+        {
+          "name": "BN",
+          "units": "nT",
+          "size": null
+        },
+        {
+          "name": "Bs",
+          "units": "nT",
+          "size": null
+        }
+      ]
+    },
+    "DSCOVR_HELIO1HR_POSITION": {
+      "start": "2015-02-12T00:00:00Z",
+      "stop": "2026-11-01T23:00:00Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "RAD_AU",
+          "units": "AU",
+          "size": null
+        },
+        {
+          "name": "SE_LAT",
+          "units": "deg",
+          "size": null
+        },
+        {
+          "name": "SE_LON",
+          "units": "deg",
+          "size": null
+        },
+        {
+          "name": "HG_LAT",
+          "units": "deg",
+          "size": null
+        },
+        {
+          "name": "HG_LON",
+          "units": "deg",
+          "size": null
+        },
+        {
+          "name": "HGI_LAT",
+          "units": "deg",
+          "size": null
+        },
+        {
+          "name": "HGI_LON",
+          "units": "deg",
+          "size": null
+        }
+      ]
+    },
+    "DSCOVR_ORBIT_PRE": {
+      "start": "2015-02-11T23:39:07Z",
+      "stop": "2026-12-09T12:00:00Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "SUN_R",
+          "units": "km",
+          "size": null
+        },
+        {
+          "name": "GCI_POS",
+          "units": "km",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "GCI_VEL",
+          "units": "km/sec",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "GSE_POS",
+          "units": "km",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "MOON_GSE_POS",
+          "units": "km",
+          "size": [
+            3
+          ]
+        }
+      ]
+    },
+    "WI_H0_MFI@0": {
+      "start": "1994-11-13T00:00:30Z",
+      "stop": "2026-10-24T23:59:30Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "BF1",
+          "units": "nT (1min)",
+          "size": null
+        },
+        {
+          "name": "BF1LOG",
+          "units": "nT (1min)",
+          "size": null
+        },
+        {
+          "name": "BRMSF1",
+          "units": "nT (1min)",
+          "size": null
+        },
+        {
+          "name": "BGSM",
+          "units": "nT (1min)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "BRMSGSM",
+          "units": "nT (1min)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "BGSE",
+          "units": "nT (1min)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "BGSEa",
+          "units": null,
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "BRMSGSE",
+          "units": "nT (1min)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "DIST",
+          "units": "Re (1min)",
+          "size": null
+        },
+        {
+          "name": "PGSM",
+          "units": "Re (1min)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "PGSE",
+          "units": "Re (1min)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "DISTV",
+          "units": "Re (1min)",
+          "size": null
+        },
+        {
+          "name": "PGSMV",
+          "units": "Re (1min)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "PGSEV",
+          "units": "Re (1min)",
+          "size": [
+            3
+          ]
+        }
+      ]
+    },
+    "WI_H0_MFI@1": {
+      "start": "1994-11-13T00:00:30Z",
+      "stop": "2026-10-24T23:59:30Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "B3F1",
+          "units": "nT (3sec)",
+          "size": null
+        },
+        {
+          "name": "B3F1LOG",
+          "units": "nT (3sec)",
+          "size": null
+        },
+        {
+          "name": "B3RMSF1",
+          "units": "nT (3sec)",
+          "size": null
+        },
+        {
+          "name": "B3GSM",
+          "units": "nT (3sec)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "B3RMSGSM",
+          "units": "nT (3sec)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "B3GSE",
+          "units": "nT (3sec)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "B3GSEa",
+          "units": null,
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "B3RMSGSE",
+          "units": "nT (3sec)",
+          "size": [
+            3
+          ]
+        }
+      ]
+    },
+    "WI_H0_MFI@2": {
+      "start": "1994-11-13T00:00:30Z",
+      "stop": "2026-10-24T23:59:30Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "B1F1",
+          "units": "nT (1hr)",
+          "size": null
+        },
+        {
+          "name": "B1F1LOG",
+          "units": "nT (1hr)",
+          "size": null
+        },
+        {
+          "name": "B1RMSF1",
+          "units": "nT (1hr)",
+          "size": null
+        },
+        {
+          "name": "B1GSM",
+          "units": "nT (1hr)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "B1RMSGSM",
+          "units": "nT (1hr)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "B1GSE",
+          "units": "nT (1hr)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "B1GSEa",
+          "units": null,
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "B1RMSGSE",
+          "units": "nT (1hr)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "DIST1",
+          "units": "Re (1hr)",
+          "size": null
+        },
+        {
+          "name": "P1GSM",
+          "units": "Re (1hr)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "P1GSE",
+          "units": "Re (1hr)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "DIST1V",
+          "units": "Re (1hr)",
+          "size": null
+        },
+        {
+          "name": "P1GSMV",
+          "units": "Re (1hr)",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "P1GSEV",
+          "units": "Re (1hr)",
+          "size": [
+            3
+          ]
+        }
+      ]
+    },
+    "WI_H1_SWE": {
+      "start": "1994-11-17T19:50:45Z",
+      "stop": "2026-10-09T23:59:16Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "fit_flag",
+          "units": "(10=He_OK,>1=P_OK)",
+          "size": null
+        },
+        {
+          "name": "year",
+          "units": "(2038=Yr0)",
+          "size": null
+        },
+        {
+          "name": "doy",
+          "units": "day",
+          "size": null
+        },
+        {
+          "name": "Proton_V_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_V_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaV_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VX_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VX_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaVX_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VY_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VY_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaVY_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VZ_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VZ_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaVZ_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_W_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_W_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaW_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Wperp_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Wperp_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaWperp_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Wpar_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Wpar_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaWpar_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "EW_flowangle",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "EW_flowangle_errorbars",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "SigmaEW_flowangle",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "NS_flowangle",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "NS_flowangle_errorbars",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "SigmaNS_flowangle",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "Proton_Np_nonlin",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Proton_Np_nonlin_log",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Proton_Np_nonlin_errorbars",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaNp_nonlin",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Alpha_V_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_V_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaV_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_VX_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_VX_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaVX_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_VY_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_VY_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaVY_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_VZ_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_VZ_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaVZ_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_W_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_W_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaW_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_Wperp_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_Wperp_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaWperp_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_Wpar_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_Wpar_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaWpar_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_Na_nonlin",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Alpha_Na_nonlin_log",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Alpha_Na_nonlin_errorbars",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaNa_nonlin",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "ChisQ_DOF_nonlin",
+          "units": null,
+          "size": null
+        },
+        {
+          "name": "Peak_doy",
+          "units": "days",
+          "size": null
+        },
+        {
+          "name": "sigmaPeak_doy",
+          "units": "days",
+          "size": null
+        },
+        {
+          "name": "Proton_V_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VX_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VY_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VZ_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_W_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Wperp_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Wpar_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Np_moment",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Proton_Np_moment_log",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "BX",
+          "units": "nT",
+          "size": null
+        },
+        {
+          "name": "BY",
+          "units": "nT",
+          "size": null
+        },
+        {
+          "name": "BZ",
+          "units": "nT",
+          "size": null
+        },
+        {
+          "name": "Ang_dev",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "dev",
+          "units": "nT",
+          "size": null
+        },
+        {
+          "name": "xgse",
+          "units": "earth radii",
+          "size": null
+        },
+        {
+          "name": "ygse",
+          "units": "earth radii",
+          "size": null
+        },
+        {
+          "name": "zgse",
+          "units": "earth radii",
+          "size": null
+        },
+        {
+          "name": "ygsm",
+          "units": "earth radii",
+          "size": null
+        },
+        {
+          "name": "zgsm",
+          "units": "earth radii",
+          "size": null
+        }
+      ]
+    },
+    "WI_H1_SWE_RTN": {
+      "start": "1994-11-17T19:50:45Z",
+      "stop": "2026-10-09T23:59:16Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "fit_flag",
+          "units": "(10=He_OK,>1=P_OK)",
+          "size": null
+        },
+        {
+          "name": "year",
+          "units": "years",
+          "size": null
+        },
+        {
+          "name": "doy",
+          "units": "day",
+          "size": null
+        },
+        {
+          "name": "Proton_V_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_V_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaV_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VR_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VR_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaVR_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VT_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VT_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaVT_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VN_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VN_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaVN_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_W_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_W_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaW_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Wperp_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Wperp_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaWperp_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Wpar_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Wpar_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaWpar_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "EW_flowangle",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "EW_flowangle_errorbars",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "SigmaEW_flowangle",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "NS_flowangle",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "NS_flowangle_errorbars",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "SigmaNS_flowangle",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "Proton_Np_nonlin",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Proton_Np_nonlin_log",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Proton_Np_nonlin_errorbars",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Proton_sigmaNp_nonlin",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Alpha_V_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_V_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaV_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_VR_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_VR_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaVR_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_VT_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_VT_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaVT_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_VN_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_VN_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaVN_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_W_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_W_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaW_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_Wperp_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_Wperp_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaWperp_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_Wpar_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_Wpar_nonlin_errorbars",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaWpar_nonlin",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Alpha_Na_nonlin",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Alpha_Na_nonlin_log",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Alpha_Na_nonlin_errorbars",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Alpha_sigmaNa_nonlin",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "ChisQ_DOF_nonlin",
+          "units": "",
+          "size": null
+        },
+        {
+          "name": "Peak_doy",
+          "units": "days",
+          "size": null
+        },
+        {
+          "name": "sigmaPeak_doy",
+          "units": "days",
+          "size": null
+        },
+        {
+          "name": "Proton_V_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VR_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VT_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_VN_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_W_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Wperp_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Wpar_moment",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Proton_Np_moment",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "Proton_Np_moment_log",
+          "units": "cm^{-3}",
+          "size": null
+        },
+        {
+          "name": "BR",
+          "units": "nT",
+          "size": null
+        },
+        {
+          "name": "BT",
+          "units": "nT",
+          "size": null
+        },
+        {
+          "name": "BN",
+          "units": "nT",
+          "size": null
+        },
+        {
+          "name": "Ang_dev",
+          "units": "degrees",
+          "size": null
+        },
+        {
+          "name": "dev",
+          "units": "nT",
+          "size": null
+        },
+        {
+          "name": "xgse",
+          "units": "earth radii",
+          "size": null
+        },
+        {
+          "name": "ygse",
+          "units": "earth radii",
+          "size": null
+        },
+        {
+          "name": "zgse",
+          "units": "earth radii",
+          "size": null
+        }
+      ]
+    },
+    "WI_H2_MFI": {
+      "start": "1994-11-13T15:50:26Z",
+      "stop": "2026-10-24T23:59:59Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "BF1",
+          "units": "nT",
+          "size": null
+        },
+        {
+          "name": "BGSM",
+          "units": "nT",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "BGSE",
+          "units": "nT",
+          "size": [
+            3
+          ]
+        }
+      ]
+    },
+    "WI_K0_SWE_RTN": {
+      "start": "1994-11-01T12:00:00Z",
+      "stop": "2026-11-11T23:58:31Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "SC_pos_gse",
+          "units": "km",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "SC_pos_GSM",
+          "units": "km",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "SC_pos_R",
+          "units": "km",
+          "size": null
+        },
+        {
+          "name": "V_RTN",
+          "units": "km/s",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "V_RTN_p",
+          "units": null,
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "THERMAL_SPD",
+          "units": "km/s",
+          "size": null
+        },
+        {
+          "name": "Np",
+          "units": "#/cc",
+          "size": null
+        },
+        {
+          "name": "Alpha_Percent",
+          "units": "%",
+          "size": null
+        }
+      ]
+    },
+    "WI_PM_3DP": {
+      "start": "1994-11-15T12:53:43Z",
+      "stop": "2026-09-28T23:59:59Z",
+      "cadence": null,
+      "parameters": [
+        {
+          "name": "Time",
+          "units": "UTC",
+          "size": null
+        },
+        {
+          "name": "P_DENS",
+          "units": "#/cm3",
+          "size": null
+        },
+        {
+          "name": "P_VELS",
+          "units": "km/sec",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "P_TENS",
+          "units": "(Instrmt Coords)",
+          "size": [
+            6
+          ]
+        },
+        {
+          "name": "P_TEMP",
+          "units": "eV",
+          "size": null
+        },
+        {
+          "name": "A_DENS",
+          "units": "#/cm3",
+          "size": null
+        },
+        {
+          "name": "A_VELS",
+          "units": "km/sec",
+          "size": [
+            3
+          ]
+        },
+        {
+          "name": "A_TENS",
+          "units": "(Instrmt Coords)",
+          "size": [
+            6
+          ]
+        },
+        {
+          "name": "A_TEMP",
+          "units": "eV",
+          "size": null
+        },
+        {
+          "name": "TIME",
+          "units": "ms",
+          "size": null
+        }
+      ]
+    }
+  }
 }
