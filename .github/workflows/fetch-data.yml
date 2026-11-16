@@ -1,0 +1,37 @@
+name: Fetch data
+# Downloads a date range from CDAWeb on a GitHub runner and stores the compact
+# cache files on the separate `data` branch, keeping `main` small.
+on:
+  workflow_dispatch:
+    inputs:
+      spacecraft:
+        description: wind or ace
+        default: wind
+      start:
+        description: first day (YYYY-MM-DD)
+        required: true
+      stop:
+        description: day after the last day (YYYY-MM-DD)
+        required: true
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e .
+      - run: python scripts/fetch_range.py "${{ inputs.spacecraft }}" "${{ inputs.start }}" "${{ inputs.stop }}" --out /tmp/cache
+      - name: Commit to the data branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch origin data:data 2>/dev/null; then git switch data; else git switch --orphan data; fi
+          mkdir -p cache && cp /tmp/cache/*.npz cache/
+          git add cache
+          git commit -m "Cache ${{ inputs.spacecraft }} ${{ inputs.start }} to ${{ inputs.stop }}"
+          git push origin data
